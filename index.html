@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>مساعد معلمة رياض الأطفال</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f4f1ff;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .header {
+            background-color: #7357e8;
+            color: white;
+            padding: 30px;
+        }
+
+        .container {
+            background-color: white;
+            width: 80%;
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px #cccccc;
+        }
+
+        select,
+        input,
+        textarea {
+            width: 90%;
+            padding: 15px;
+            margin: 10px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        textarea {
+            min-height: 100px;
+        }
+
+        button {
+            background-color: #7357e8;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            margin: 10px;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 25px;
+            text-align: right;
+            background: #fafafa;
+            padding: 20px;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>🌈 مساعد معلمة رياض الأطفال</h1>
+        <p>مساعدك الذكي لصناعة أنشطة تعليمية ممتعة</p>
+    </div>
+
+    <div class="container">
+
+        <h2>ماذا تريدين أن نُعد اليوم؟</h2>
+
+        <select id="grade">
+            <option>KG1</option>
+            <option>KG2</option>
+        </select>
+
+        <select id="subject">
+            <option>اللغة العربية</option>
+            <option>English</option>
+            <option>رياضيات</option>
+            <option>علوم</option>
+            <option>مهارات</option>
+        </select>
+
+        <select id="type">
+            <option>تحضير نشاط</option>
+            <option>قصة تعليمية</option>
+            <option>لعبة تعليمية</option>
+            <option>ورقة عمل</option>
+            <option>خطة دعم</option>
+            <option>تقييم طفل</option>
+        </select>
+
+        <select id="duration">
+            <option>15 دقيقة</option>
+            <option>25 دقيقة</option>
+            <option>35 دقيقة</option>
+            <option>45 دقيقة</option>
+        </select>
+
+        <select id="level">
+            <option>مستوى متنوع</option>
+            <option>يحتاج دعم</option>
+            <option>متوسط</option>
+            <option>متقدم</option>
+        </select>
+
+        <input id="topic" type="text" placeholder="اكتبي الموضوع مثل: حرف الباء">
+
+        <textarea id="notes" placeholder="اكتبي أي تفاصيل إضافية هنا..."></textarea>
+
+        <button onclick="generateContent()">✨ إنشاء المحتوى</button>
+
+        <div id="result"></div>
+
+    </div>
+
+    <script>
+        function generateContent() {
+
+            const grade = document.getElementById("grade").value;
+            const subject = document.getElementById("subject").value;
+            const type = document.getElementById("type").value;
+            const duration = document.getElementById("duration").value;
+            const level = document.getElementById("level").value;
+            const topic = document.getElementById("topic").value;
+            const notes = document.getElementById("notes").value;
+
+            const result = document.getElementById("result");
+if (type === "قصة تعليمية") {
+
+    result.innerHTML = `
+        <h3>📖 قصة تعليمية عن ${topic}</h3>
+
+        <p><strong>المرحلة:</strong> ${grade}</p>
+        <p><strong>المدة:</strong> ${duration}</p>
+
+        <h4>🌟 عنوان القصة</h4>
+        <p>مغامرة ممتعة مع ${topic}</p>
+
+        <h4>📚 القصة</h4>
+        <p>
+        في صباح جميل، بدأ أصدقاؤنا رحلة صغيرة لاكتشاف ${topic}.
+        وخلال الرحلة شاهدوا صورًا وأشياء مختلفة،
+        وبدأ الأطفال يكتشفون الفكرة بطريقة ممتعة وبسيطة.
+        </p>
+
+        <h4>❓ أسئلة بعد القصة</h4>
+        <p>
+        ماذا تعلمنا اليوم؟<br>
+        أين شاهدنا ${topic}؟<br>
+        هل تستطيع أن تعطيني مثالًا آخر؟
+        </p>
+    `;
+
+    return;
+}
+            if (topic === "") {
+                result.innerHTML = "<p>من فضلك اكتبي الموضوع أولًا 🌸</p>";
+                return;
+            }
+
+            result.innerHTML = `
+                <h3>✨ ${type}</h3>
+
+                <p><strong>المرحلة:</strong> ${grade}</p>
+                <p><strong>المادة:</strong> ${subject}</p>
+                <p><strong>المدة:</strong> ${duration}</p>
+                <p><strong>المستوى:</strong> ${level}</p>
+                <p><strong>الموضوع:</strong> ${topic}</p>
+                <p><strong>تفاصيل إضافية:</strong> ${notes}</p>
+
+                <h4>🎯 الهدف</h4>
+                <p>أن يتعرف الطفل على ${topic} بطريقة بسيطة وممتعة.</p>
+
+                <h4>🧰 الأدوات المطلوبة</h4>
+                <p>بطاقات مصورة، أوراق، ألوان، وأدوات بسيطة متوفرة داخل الفصل.</p>
+
+                <h4>🎲 النشاط</h4>
+                <p>
+                استخدمي الصور والبطاقات المرتبطة بـ ${topic}
+                واطلبي من الأطفال المشاركة والتفاعل.
+                </p>
+
+                <h4>🤸 نشاط حركي</h4>
+                <p>
+                اجعلي الأطفال ينفذون حركة أو لعبة مرتبطة بموضوع ${topic}.
+                </p>
+
+                <h4>✅ التقييم</h4>
+                <p>
+                اطرحي سؤالًا بسيطًا على الطفل ولاحظي قدرته على فهم ${topic}.
+                </p>
+
+                <h4>🌱 دعم الأطفال</h4>
+                <p>
+                استخدمي صورًا أوضح، تعليمات قصيرة، وتكرارًا أكثر.
+                </p>
+
+                <h4>⭐ إثراء الأطفال المتقدمين</h4>
+                <p>
+                اطلبي منهم إعطاء مثال جديد أو شرح الفكرة بطريقتهم.
+                </p>
+            `;
+        }
+    </script>
+
+</body>
+
+</html>
